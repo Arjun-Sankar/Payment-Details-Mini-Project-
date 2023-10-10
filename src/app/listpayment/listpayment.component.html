@@ -1,0 +1,36 @@
+<div>
+    <table class="table  table-striped">
+        <thead>
+            <tr>
+                <th >
+                    Serial No.
+                </th>
+                <th >
+                    Username
+                </th>
+                <th >
+                    Card Number
+                </th>
+                <th >
+                    Amount
+                </th>
+                <th  style=" padding-left: 50px;">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let u of userPaymentDatas;index as i;even as e"
+                [ngStyle]="{'background-color':e?'white':'Gray'}">
+                <td>{{i}}</td>
+                <td>{{u.uname | titlecase}}</td>
+                <td>{{u.cardno}}</td>
+                <td>{{u.amt | currency:"INR"}}</td>
+                <td><button class="btn btn-success" >EDIT</button> &nbsp; <button class="btn btn-danger"
+                        (click)="doDelete(i)">DELETE</button></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>

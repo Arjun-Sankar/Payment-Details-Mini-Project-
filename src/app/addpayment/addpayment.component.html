@@ -1,0 +1,8 @@
+<div>
+    Username:<input type="text" [(ngModel)]="paymentUsername" id="activename" (keyup)="doValid($event)"><br><br>
+    Card Number: <input type="text" [(ngModel)]="paymentCardnumber" id="activenum" (keyup)="doValid($event)"> <br><br>
+     Amount:<input type="text" [(ngModel)]="paymentAmount" id="activeamt" (keyup)="doValid($event)"> <br><br>
+    <button class="btn btn-info btn-lg" (click)="addDetails()" [disabled]="!validButton">Add User Details</button><br><br>
+</div>
+
+<app-listpayment></app-listpayment>

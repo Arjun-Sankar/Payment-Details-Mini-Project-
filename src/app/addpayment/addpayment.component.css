@@ -1,0 +1,21 @@
+div{
+    width: 400px;
+    margin: auto;
+    font-size: 16px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 50px;
+
+}
+button{
+    margin-left: 110px;
+    margin-top: 20px;
+}
+input{
+    margin-left: 20px;
+}
+#activename{
+    margin-left: 52px;
+}
+#activeamt{
+    margin-left: 69px;
+}
