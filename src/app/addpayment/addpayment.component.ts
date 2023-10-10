@@ -40,8 +40,5 @@ export class AddpaymentComponent {
     this.userdata.cardnumber = this.paymentCardnumber;
     this.userdata.amount = this.paymentAmount;
     this.userdata.addServices();
-    this.paymentUsername = "";
-    this.paymentCardnumber = 0;
-    this.paymentAmount = 0;
   }
 }
