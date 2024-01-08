@@ -1,4 +1,11 @@
-<div>
+<div style=" width: 560px;">
+SearchBy: <select [(ngModel)]="sortOut" style="width: 120px;">
+    <option value="uname">Username</option>
+    <option value="cardno">Cardnumber</option>
+    <option value="amt">Amount</option>
+</select>  &nbsp;
+Search : <input type="text" [(ngModel)]="userSearch"  style="width: 250px;"></div> <br><br>
+<div style="width: 700px;">
     <table class="table  table-striped">
         <thead>
             <tr>
@@ -8,7 +15,7 @@
                 <th >
                     Username
                 </th>
-                <th >
+                <th style="padding-left: 30px;">
                     Card Number
                 </th>
                 <th >
@@ -20,13 +27,13 @@
             </tr>
         </thead>
         <tbody >
-            <tr *ngFor="let u of userPaymentDatas;index as i;even as e"
+            <tr *ngFor="let u of userPaymentDatas | filtering : userSearch : sortOut;index as i;even as e"
                 [ngStyle]="{'background-color':e?'white':'Gray'}">
                 <td>{{i}}</td>
-                <td>{{u.uname | titlecase}}</td>
-                <td>{{u.cardno}}</td>
+                <td>{{u.uname | startsupper}}</td>
+                <td>{{u.cardno | checkcard : "hideNum"}}</td>
                 <td>{{u.amt | currency:"INR"}}</td>
-                <td><button class="btn btn-success" >EDIT</button> &nbsp; <button class="btn btn-danger"
+                <td><button class="btn btn-success" (click)="doUpdate()">EDIT</button> &nbsp; <button class="btn btn-danger"
                         (click)="doDelete(i)">DELETE</button></td>
             </tr>
         </tbody>

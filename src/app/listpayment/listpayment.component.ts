@@ -8,17 +8,20 @@ import { PaymentServices } from '../payment.service';
 })
 export class ListpaymentComponent {
   userPaymentDatas: any;
-
+  userSearch:any;
+  sortOut ="uname";
   constructor(public userdata: PaymentServices) {
     if (this.userdata.userPaymentDetails) {
       this.userPaymentDatas = this.userdata.userPaymentDetails;
     }
-
   }
   doDelete(ind: any) {
     this.userdata.userInd = ind;
     if (confirm("Are You Sure Want To Delete This?") == true) {
-      this.userdata.userDelete();
+      this.userdata.userDelete();   
     }
+  }
+  doUpdate(){
+    
   }
 }

@@ -1,6 +1,7 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild} from '@angular/core';
 import { PaymentServices } from '../payment.service';
 import { EMPTY, empty } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-addpayment',
@@ -8,36 +9,42 @@ import { EMPTY, empty } from 'rxjs';
   styleUrls: ['./addpayment.component.css']
 })
 export class AddpaymentComponent {
-  paymentUsername!: string;
-  paymentCardnumber!: number;
-  paymentAmount!: number;
+  userFormData:any;
+  paymentName: any;
+  paymentCard:any;
+  paymentAmount:any;
+  arrCard: any[] = [];
+  cardnumb: any[] = [];
   validButton: boolean = false;
-  @ViewChild('name') name!: ElementRef;
-  @ViewChild('num') num!: ElementRef;
-  @ViewChild('amt') amt!: ElementRef;
+  checkMaster: boolean = false;
+  // @ViewChild('uname') uname!: ElementRef;
+  // @ViewChild('cardno') cardno!: ElementRef;
+  // @ViewChild('amt') amt!: ElementRef;
 
 
   constructor(public userdata: PaymentServices) {
-    console.log("hii")
+   
   }
-  doValid(eve: any) {
-    if (this.paymentUsername && this.paymentCardnumber && this.paymentAmount) {
-      if (eve.target.id == 'activename') {
-        this.validButton = true;
-      }
-      else if (eve.target.id == 'activenum') {
-        this.validButton = true;
-      }
-      else if (eve.target.id == 'activeamt') {
-        this.validButton = true;
-      }
+  getData(form: NgForm){
+    this.userFormData=form.value;
+  // console.log(this.userFormData)
+  }
+  doValid() {
+    if (this.paymentName && this.paymentCard && this.paymentAmount) {
+      this.validButton = true;
     } else {
       this.validButton = false;
     }
+   
   }
+
   addDetails() {
-    this.userdata.username = this.paymentUsername;
-    this.userdata.cardnumber = this.paymentCardnumber;
+    this.arrCard = this.paymentCard.toString().split("");
+    this.cardnumb = this.arrCard.filter((val, ind, arr) => {
+      return val>=0;
+    })
+    this.userdata.username = this.paymentName;
+    this.userdata.cardnumber = this.cardnumb.join("");
     this.userdata.amount = this.paymentAmount;
     this.userdata.addServices();
   }

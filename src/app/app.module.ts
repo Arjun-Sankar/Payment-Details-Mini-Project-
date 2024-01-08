@@ -6,12 +6,20 @@ import { AddpaymentComponent } from './addpayment/addpayment.component';
 import { ListpaymentComponent } from './listpayment/listpayment.component';
 import { FormsModule } from '@angular/forms';
 import { PaymentServices } from './payment.service';
+import { FilteringPipe } from './filtering.pipe';
+import { StartsupperPipe } from './startsupper.pipe';
+import { CheckcardPipe } from './custom/checkcard.pipe';
+import { UsercardDirective } from './custom/usercard.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddpaymentComponent,
-    ListpaymentComponent
+    ListpaymentComponent,
+    FilteringPipe,
+    StartsupperPipe,
+    CheckcardPipe,
+    UsercardDirective
   ],
   imports: [
     BrowserModule,
